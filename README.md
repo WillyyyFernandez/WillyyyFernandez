@@ -1,16 +1,31 @@
-## Hi there 👋
+# Hi, I'm William Fernández 👋
 
-<!--
-**WillyyyFernandez/WillyyyFernandez** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+🎓 Data & AI Engineering Student at Universidad Politécnica de Yucatán
 
-Here are some ideas to get you started:
+📍 Mérida, México
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+Interested in Data Engineering, Cloud Infrastructure and Business Analytics.
+
+## About Me
+
+- Currently studying Data & AI Engineering (5th quarter)
+- Building ETL pipelines and cloud-based applications
+- Interested in Data Engineering and Business Analytics
+- Looking for internship opportunities
+
+## Featured Projects
+
+### PulseCore DC Dashboard
+
+Cloud-native dashboard for monitoring and analyzing the Mexican data center market.
+
+Tech:
+Python · Streamlit · AWS ECS · Docker · Terraform · GitHub Actions
+
+### Climavis
+
+Interactive climate data platform with API backend and database integration.
+
+Tech:
+Python · FastAPI · SQLAlchemy · SQLite
+
