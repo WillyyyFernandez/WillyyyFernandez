@@ -29,3 +29,25 @@ Interactive climate data platform with API backend and database integration.
 Tech:
 Python · FastAPI · SQLAlchemy · SQLite
 
+## Tech Stack
+
+Python
+SQL
+PostgreSQL
+Docker
+AWS
+Terraform
+FastAPI
+Power BI
+GitHub Actions
+
+## Certifications
+
+AWS Cloud Foundations
+IBM Python for Data Science
+Data Analyst in Power BI
+
+## Contact
+
+LinkedIn: www.linkedin.com/in/william-fernández
+Email: fernandezcastillowilliam@gmail.com
