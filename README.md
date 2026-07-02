@@ -83,7 +83,6 @@ Hybrid prompt-injection detection engine, built with my team at the **Apart Rese
 <br>
 <img src="https://img.shields.io/badge/LangGraph-1C3C3C?style=flat-square&logo=langchain&logoColor=white" />
 <img src="https://img.shields.io/badge/Ollama-000000?style=flat-square&logo=ollama&logoColor=white" />
-<img src="https://img.shields.io/badge/Pydantic-E92063?style=flat-square&logo=pydantic&logoColor=white" />
 
 **Cloud & DevOps**
 <br>
