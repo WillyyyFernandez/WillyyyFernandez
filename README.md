@@ -100,6 +100,13 @@ Hybrid prompt-injection detection engine, built with my team at the **Apart Rese
 <img src="https://img.shields.io/badge/PostgreSQL-4169E1?style=flat-square&logo=postgresql&logoColor=white" />
 <img src="https://img.shields.io/badge/Power_BI-F2C811?style=flat-square&logo=powerbi&logoColor=black" />
 
+---
+
+### 📈 Contribution Activity
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/WillyyyFernandez/WillyyyFernandez/output/github-contribution-grid-snake.svg" alt="Contribution snake animation" />
+</p>
 
 ---
 
