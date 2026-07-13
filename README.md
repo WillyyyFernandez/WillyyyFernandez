@@ -113,6 +113,7 @@ Hybrid prompt-injection detection engine, built with my team at the **Apart Rese
 
 <img src="https://img.shields.io/badge/AWS-Cloud_Foundations-FF9900?style=flat-square&logo=amazonaws&logoColor=white" />
 <img src="https://img.shields.io/badge/IBM-Python_for_Data_Science-052FAD?style=flat-square&logo=ibm&logoColor=white" />
+<img src="https://img.shields.io/badge/IBM-ETL_&_Data_Pipelines-052FAD?style=flat-square&logo=ibm&logoColor=white" />
 <img src="https://img.shields.io/badge/Power_BI-Data_Analyst-F2C811?style=flat-square&logo=powerbi&logoColor=black" />
 
 ---
