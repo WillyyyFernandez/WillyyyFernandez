@@ -1,5 +1,5 @@
 <h1 align="center">Hi, I'm William Fernández 👋</h1>
-<h3 align="center">Data & AI Engineering Student · Turning data pipelines into intelligent systems</h3>
+<h3 align="center">Data & AI Engineering Student</h3>
 
 <p align="center">
   <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=18&pause=1000&color=2E9EF7&center=true&vCenter=true&width=600&lines=Data+%26+AI+Engineering+%40+UPY;ETL+Pipelines+%7C+SQL+%7C+AWS+%7C+Terraform;LangGraph+%7C+Multi-Agent+Systems+%7C+LLMs;Open+to+Internship+Opportunities" alt="Typing SVG" />
