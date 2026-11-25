@@ -1,127 +1,53 @@
-<h1 align="center">Hi, I'm William Fernández 👋</h1>
-<h3 align="center">Data & AI Engineering Student</h3>
+# William Fernández
 
-<p align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=18&pause=1000&color=2E9EF7&center=true&vCenter=true&width=600&lines=Data+%26+AI+Engineering+%40+UPY;ETL+Pipelines+%7C+SQL+%7C+AWS+%7C+Terraform;LangGraph+%7C+Multi-Agent+Systems+%7C+LLMs;Open+to+Internship+Opportunities" alt="Typing SVG" />
-</p>
+Data engineering student in Mérida, México (Universidad Politécnica de Yucatán, Data & AI Engineering).
 
-<p align="center">
-  <a href="https://www.linkedin.com/in/william-fernández"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" /></a>
-  <a href="mailto:fernandezcastillowilliam@gmail.com"><img src="https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white" /></a>
-  <img src="https://img.shields.io/badge/Mérida,_México-000000?style=for-the-badge&logo=googlemaps&logoColor=white" />
-  <img src="https://img.shields.io/badge/Open_to-Internships-2E9EF7?style=for-the-badge" />
-</p>
+I like pipelines where you can tell what happened to every row: raw data that is never overwritten, tests on the numbers, a freshness check that fails loudly, and infrastructure you can rebuild from the repo. I also work with small local language models, mostly keeping them on a short leash.
 
----
+Open to data engineering opportunities. [Email](mailto:fernandezcastillowilliam@gmail.com) or [LinkedIn](https://www.linkedin.com/in/william-fernández).
 
-### 👨‍💻 About Me
+## Projects
 
-- 🎓 5th-semester **Data & AI Engineering** student at Universidad Politécnica de Yucatán
-- 🔧 Solid foundation in **data engineering**: ETL pipelines, SQL, cloud infrastructure (AWS ECS Fargate), Terraform, Docker
-- 🤖 Currently deep in **LLM agent orchestration** — LangGraph, multi-agent Blackboard architectures, local SLMs via Ollama
-- 📊 I like turning raw data into systems people can actually use: pipelines, dashboards, and now agentic AI on top of them
-- 🔭 Preparing for a professional internship (Sept 2026) building a multi-agent AI system
-- 📫 Reach me at **fernandezcastillowilliam@gmail.com**
+### [Monitor financiero](https://github.com/WillyyyFernandez/monitor-financiero) ([live dashboard](https://monitor-financiero-4seqidqnjmqmloijab7px7.streamlit.app/))
+Daily pipeline for Mexican financial data: exchange rate, TIIE, CETES and inflation from Banxico, plus BTC, ETH and USDT from Binance.
 
----
+- Every download is written as a new Parquet file and never rewritten. Staging keeps the latest version of each value, so a Banxico revision replaces the old number without losing what was published before.
+- dbt on DuckDB, orchestrated with Dagster on a daily schedule. 43 dbt tests cover uniqueness, nulls, plausible ranges and data freshness. A second job checks load freshness and goes red if the daily run did not happen.
+- CI runs the whole dbt build on a fixed sample of public data, so it needs no network and no tokens.
+- Natural-language agent on a local Qwen2.5-14B. The model never writes SQL: it picks one of six functions and the code runs a parameterized, read-only query. Scored 6/6 on a small question set, including one with no data where it correctly declined.
 
-### 🚀 Featured Projects
+`Python` `dbt` `DuckDB` `Dagster` `Docker` `GitHub Actions` `Streamlit`
 
-<table>
-<tr>
-<td width="50%" valign="top">
+### [PulseCore DC Dashboard](https://github.com/WillyyyFernandez/pulsecore-dc-dashboard)
+Operations dashboard for a fictional Tier III data center, built to practice the deployment side: containerized Streamlit app, with the VPC, ECS cluster and load balancer defined in Terraform and a GitHub Actions build. The data is illustrative; the point is that the environment can be recreated from the repo.
 
-**📊 [PulseCore DC Dashboard](https://github.com/WillyyyFernandez/pulsecore-dc-dashboard)**
-Cloud-native dashboard for monitoring and analyzing the Mexican data center market, deployed on serverless container infrastructure.
+`Python` `Streamlit` `Terraform` `AWS ECS` `Docker` `Plotly`
 
-Full IaC deployment with Terraform + CI/CD via GitHub Actions.
+### [COVID-19 Mortality Analysis](https://github.com/WillyyyFernandez/covid19-mortality-analysis)
+ETL and analysis of 137,030 records from Mexico's official surveillance data, feeding a three-page Power BI dashboard (case fatality rate by state, age and comorbidity). I kept the 1.05M-row Kaggle historical dataset out of the main fact table on purpose: merged, the hospitalization KPIs counted rows with no status while the case count respected the filters, and the two disagreed silently. The notebook documents that decision, the sentinel codes (97, 98, 99) treated as missing, and the limits of the CFR estimate.
 
-`Python` `Streamlit` `AWS ECS Fargate` `Terraform` `Docker`
+`Python` `Pandas` `Plotly` `Power BI`
 
-</td>
-<td width="50%" valign="top">
+### Team projects
 
-**🦠 [COVID-19 Mortality Analysis](https://github.com/WillyyyFernandez/covid19-mortality-analysis)**
-End-to-end analysis pipeline (cleaning → cohort analysis → time series) feeding an interactive Power BI dashboard on COVID-19 mortality in Mexico.
+**[ARC-AGI Failure Modes & Evaluation Pipeline](https://github.com/WillyyyFernandez/atlas-agi)** (5 people). Pipeline to study how local and frontier LLMs fail on the ARC-AGI benchmark: ETL, batch inference, scoring, a failure taxonomy and analytics tables in Parquet. I owned the data layer:
+- ETL that reads every task JSON of the evaluation split and writes a clean table to Parquet, partitioned by split and task ID.
+- Quality validation that catches empty grids, inconsistent dimensions and null fields, and writes the rejects to a separate log and error table.
+- The Parquet schema (15 columns, with a hash per grid), documented type decisions, and a schema freeze so the inference and analytics work could build on it without surprises.
+- Built to rebuild identically: delete the output, rerun, get the same table.
 
-`Python` `Jupyter` `Power BI`
+`Python` `Pandas` `PyArrow` `DuckDB`
 
-</td>
-</tr>
-<tr>
-<td width="50%" valign="top">
+**[TUP-detection](https://github.com/notyorch/TUP-detection)** (4 authors, Apart Research Global South Hackathon 2026). Prompt-injection detection engine: deterministic regex rules first, then a neural classifier (Sentinel v2) for what the rules miss, with an optional LLM judge for the gray zone. 95.1% balanced accuracy on the deepset PINT split (n = 662). Team project; I worked on the detection pipeline.
 
-**🌡️ [Climavis](https://github.com/WillyyyFernandez/climavis-full-stack)**
-Interactive climate data platform for Mexico with a REST API backend and full database integration.
+**[Climavis](https://github.com/WillyyyFernandez/climavis-full-stack)** (team project). Interactive climate dashboard for Mexican states: React and TypeScript front end with a Leaflet map, and a FastAPI back end over a SQLite database of historical observations, with endpoints for states, daily records and per-state statistics.
 
-`Python` `FastAPI` `SQLAlchemy`
+`Python` `FastAPI` `SQLAlchemy` `SQLite` `React`
 
-</td>
-<td width="50%" valign="top">
+## Tools I use
 
-**🛡️ [TUP-detection](https://github.com/notyorch/TUP-detection)** *(team project)*
-Hybrid prompt-injection detection engine, built with my team at the **Apart Research Global South Hackathon 2026**. I contributed to the detection pipeline.
-
-**95.1% PINT balanced accuracy** via regex → Presidio NER → LLM judge (qwen2.5-coder:3b), mapped to OWASP LLM Top 10 & MITRE ATLAS.
-
-`Python` `FastAPI` `Ollama` `Docker Compose`
-
-</td>
-</tr>
-</table>
-
----
-
-### 🛠️ Tech Stack
-
-**Languages**
-<br>
-<img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" />
-<img src="https://img.shields.io/badge/SQL-4479A1?style=flat-square&logo=postgresql&logoColor=white" />
-<img src="https://img.shields.io/badge/Bash-4EAA25?style=flat-square&logo=gnu-bash&logoColor=white" />
-
-**AI & Agents**
-<br>
-<img src="https://img.shields.io/badge/LangGraph-1C3C3C?style=flat-square&logo=langchain&logoColor=white" />
-<img src="https://img.shields.io/badge/Ollama-000000?style=flat-square&logo=ollama&logoColor=white" />
-
-**Cloud & DevOps**
-<br>
-<img src="https://img.shields.io/badge/AWS-232F3E?style=flat-square&logo=amazonaws&logoColor=white" />
-<img src="https://img.shields.io/badge/Terraform-7B42BC?style=flat-square&logo=terraform&logoColor=white" />
-<img src="https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white" />
-<img src="https://img.shields.io/badge/GitHub_Actions-2088FF?style=flat-square&logo=githubactions&logoColor=white" />
-
-**Data & Backend**
-<br>
-<img src="https://img.shields.io/badge/FastAPI-009688?style=flat-square&logo=fastapi&logoColor=white" />
-<img src="https://img.shields.io/badge/Flask-000000?style=flat-square&logo=flask&logoColor=white" />
-<img src="https://img.shields.io/badge/SQLAlchemy-D71F00?style=flat-square&logo=sqlalchemy&logoColor=white" />
-<img src="https://img.shields.io/badge/PostgreSQL-4169E1?style=flat-square&logo=postgresql&logoColor=white" />
-<img src="https://img.shields.io/badge/Apache_Airflow-017CE2?style=flat-square&logo=apache-airflow&logoColor=white" />
-<img src="https://img.shields.io/badge/Apache_Kafka-231F20?style=flat-square&logo=apache-kafka&logoColor=white" />
-<img src="https://img.shields.io/badge/Power_BI-F2C811?style=flat-square&logo=powerbi&logoColor=black" />
-
----
-
-### 📈 Contribution Activity
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/WillyyyFernandez/WillyyyFernandez/output/github-contribution-grid-snake.svg" alt="Contribution snake animation" />
-</p>
-
----
-
-### 🏆 Certifications
-
-<img src="https://img.shields.io/badge/AWS-Cloud_Foundations-FF9900?style=flat-square&logo=amazonaws&logoColor=white" />
-<img src="https://img.shields.io/badge/IBM-Python_for_Data_Science-052FAD?style=flat-square&logo=ibm&logoColor=white" />
-<img src="https://img.shields.io/badge/IBM-ETL_&_Data_Pipelines-052FAD?style=flat-square&logo=ibm&logoColor=white" />
-<img src="https://img.shields.io/badge/Power_BI-Data_Analyst-F2C811?style=flat-square&logo=powerbi&logoColor=black" />
-
----
-
-<p align="center">
-  <a href="https://www.linkedin.com/in/william-fernández"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" /></a>
-  <a href="mailto:fernandezcastillowilliam@gmail.com"><img src="https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white" /></a>
-</p>
+- **Pipelines and storage:** Python, SQL, dbt, DuckDB, Dagster, Parquet
+- **Analytics:** Pandas, Power BI, Streamlit
+- **Backend:** FastAPI, SQLAlchemy
+- **Infra:** Docker, Terraform, AWS (ECS), GitHub Actions
+- **Local LLMs:** llama.cpp, function calling, JSON schema validation
